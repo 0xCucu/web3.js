@@ -798,25 +798,25 @@ Method.prototype.buildCall = function () {
                 )
             )
         ) {
-            _handleTxPricing(method, payload.params[0]).then(txPricing => {
-                if (txPricing.gasPrice !== undefined) {
-                    payload.params[0].gasPrice = txPricing.gasPrice;
-                } else if (
-                    txPricing.maxPriorityFeePerGas !== undefined
-                    && txPricing.maxFeePerGas !== undefined
-                ) {
-                    payload.params[0].maxPriorityFeePerGas = txPricing.maxPriorityFeePerGas;
-                    payload.params[0].maxFeePerGas = txPricing.maxFeePerGas;
-                }
+            // _handleTxPricing(method, payload.params[0]).then(txPricing => {
+            //     if (txPricing.gasPrice !== undefined) {
+            //         payload.params[0].gasPrice = txPricing.gasPrice;
+            //     } else if (
+            //         txPricing.maxPriorityFeePerGas !== undefined
+            //         && txPricing.maxFeePerGas !== undefined
+            //     ) {
+            //         payload.params[0].maxPriorityFeePerGas = txPricing.maxPriorityFeePerGas;
+            //         payload.params[0].maxFeePerGas = txPricing.maxFeePerGas;
+            //     }
 
-                if (isSendTx) {
-                    setTimeout(() => {
-                        defer.eventEmitter.emit('sending', payload);
-                    }, 0);
-                }
+            //     if (isSendTx) {
+            //         setTimeout(() => {
+            //             defer.eventEmitter.emit('sending', payload);
+            //         }, 0);
+            //     }
 
                 sendRequest(payload, method);
-            })
+            // })
         } else {
             if (isSendTx) {
                 setTimeout(() => {
